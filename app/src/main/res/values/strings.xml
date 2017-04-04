@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Color Logger</string>
+    <string name="startText">Status</string>
+    <string name="closeText">Close</string>
+</resources>
