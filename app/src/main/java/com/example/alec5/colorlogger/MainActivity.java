@@ -10,11 +10,18 @@ import android.support.v7.widget.LinearLayoutCompat;
 import android.view.View;
 import android.widget.TextView;
 
+import java.io.DataInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.net.Socket;
 
 public class MainActivity extends AppCompatActivity {
+    //Network objects
     private Socket socket = null;
+    private DataInputStream os = null;
+    private PrintStream ps = null;
+
     private TextView status = null;
     private OpenConnection openConnection = new OpenConnection();
 
@@ -46,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             try {
                 socket = new Socket("192.168.4.1", 23);
+                os = new DataInputStream(socket.getInputStream());
+                ps = new PrintStream(socket.getOutputStream());
             } catch (IOException e) {
                 e.printStackTrace();
 
